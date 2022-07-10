@@ -24,23 +24,16 @@
 
     # Dev stuff
     # (agda.withPackages (p: [ p.standard-library ]))
-    google-cloud-sdk
-    haskellPackages.cabal-install
-    haskellPackages.hoogle
-    haskellPackages.hpack
-    haskellPackages.implicit-hie
-    haskellPackages.stack
-    idris2
+    gh
     jq
-    nodePackages.typescript
-    nodejs
-    purescript
+
+    # nodePackages.typescript
+    # nodejs
 
     # Useful nix related tools
     cachix # adding/managing alternative binary caches hosted by Cachix
     # comma # run software from without installing it
     niv # easy dependency management for nix projects
-    nodePackages.node2nix
 
   ] ++ lib.optionals stdenv.isDarwin [
     cocoapods
@@ -50,16 +43,16 @@
   # Misc configuration files --------------------------------------------------------------------{{{
 
   # https://docs.haskellstack.org/en/stable/yaml_configuration/#non-project-specific-config
-  home.file.".stack/config.yaml".text = lib.generators.toYAML {} {
-    templates = {
-      scm-init = "git";
-      params = {
-        author-name = "Your Name"; # config.programs.git.userName;
-        author-email = "youremail@example.com"; # config.programs.git.userEmail;
-        github-username = "yourusername";
-      };
-    };
-    nix.enable = true;
-  };
+  # home.file.".stack/config.yaml".text = lib.generators.toYAML {} {
+  #   templates = {
+  #     scm-init = "git";
+  #     params = {
+  #       author-name = "Your Name"; # config.programs.git.userName;
+  #       author-email = "youremail@example.com"; # config.programs.git.userEmail;
+  #       github-username = "yourusername";
+  #     };
+  #   };
+  #   nix.enable = true;
+  # };
 
 }

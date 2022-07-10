@@ -1,16 +1,17 @@
 {
-  description = "Jun's darwin system";
+  description = "mk5r's darwin system";
 
   inputs = {
     # Package sets
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-21.11-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.05-darwin";
     nixpkgs-unstable.url = github:NixOS/nixpkgs/nixpkgs-unstable;
 
     # Environment/system management
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Other sources
     comma = { url = github:Shopify/comma; flake = false; };
@@ -30,7 +31,6 @@
         # Sub in x86 version of packages that don't build on Apple Silicon yet
         final: prev: (optionalAttrs (prev.stdenv.system == "aarch64-darwin") {
           inherit (final.pkgs-x86)
-            idris2
             nix-index
             niv
             purescript;
@@ -42,7 +42,7 @@
     # My `nix-darwin` configs
       
     darwinConfigurations = rec {
-      j-one = darwinSystem {
+      mikes-mbp-3 = darwinSystem {
         system = "aarch64-darwin";
         modules = attrValues self.darwinModules ++ [ 
           # Main `nix-darwin` config
@@ -54,7 +54,7 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jun = import ./home.nix;            
+            home-manager.users.mk5r = import ./home.nix;            
           }
         ];
       };
@@ -78,7 +78,7 @@
         }; 
       };
 
-    # My `nix-darwin` modules that are pending upstream, or patched versions waiting on upstream
+    # `nix-darwin` modules that are pending upstream, or patched versions waiting on upstream
     # fixes.
     darwinModules = {
       programs-nix-index = 

@@ -34,6 +34,7 @@
   environment.systemPackages = with pkgs; [
     kitty
     terminal-notifier
+    iterm2
   ];
 
   # https://github.com/nix-community/home-manager/issues/423
@@ -43,7 +44,7 @@
   programs.nix-index.enable = true;
 
   # Fonts
-  fonts.enableFontDir = true;
+  fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
      recursive
      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
