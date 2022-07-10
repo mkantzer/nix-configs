@@ -54,7 +54,7 @@
             # `home-manager` config
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.mk5r = import ./home.nix;            
+            home-manager.users.mkantzer = import ./home.nix;            
           }
         ];
       };

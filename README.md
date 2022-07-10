@@ -28,7 +28,7 @@ git clone git@github.com:mkantzer/nix-configs.git
 # Until this is addressed https://github.com/LnL7/nix-darwin/issues/149
 sudo mv /etc/nix/nix.conf /etc/nix/.nix-darwin.bkp.nix.conf
 # Build the configuration
-nix build .#darwinConfigurations.mk5r.system
+nix build .#darwinConfigurations.mikes-mbp-3.system
 ./result/sw/bin/darwin-rebuild switch --flake .
 # Enjoy!
 ```
