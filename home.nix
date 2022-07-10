@@ -23,12 +23,8 @@
     wget
 
     # Dev stuff
-    # (agda.withPackages (p: [ p.standard-library ]))
     gh
     jq
-
-    # nodePackages.typescript
-    # nodejs
 
     # Useful nix related tools
     cachix # adding/managing alternative binary caches hosted by Cachix
